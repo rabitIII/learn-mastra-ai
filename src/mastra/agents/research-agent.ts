@@ -1,8 +1,13 @@
 import { Agent } from '@mastra/core/agent';
 import { Memory } from '@mastra/memory';
 import { LibSQLStore } from '@mastra/libsql';
-import { qwen } from 'qwen-ai-provider';
+import { createQwen } from 'qwen-ai-provider';
 import { createVectorQueryTool } from '@mastra/rag';
+
+export const qwen = createQwen({
+  baseURL: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+  apiKey: process.env.DASHSCOPE_API_KEY!
+})
 
 // Create a tool for semantic search over our paper embeddings
 const vectorQueryTool = createVectorQueryTool({
@@ -10,6 +15,7 @@ const vectorQueryTool = createVectorQueryTool({
   indexName: "papers",
   model: qwen.textEmbeddingModel("text-embedding-v3"),
 });
+
 
 export const researchAgent = new Agent({
   name: 'researchAgent',
