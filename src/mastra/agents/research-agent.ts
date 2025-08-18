@@ -12,7 +12,7 @@ export const qwen = createQwen({
 // Create a tool for semantic search over our paper embeddings
 const vectorQueryTool = createVectorQueryTool({
   vectorStoreName: "pgVector",
-  indexName: "papers",
+  indexName: "resume",
   model: qwen.textEmbeddingModel("text-embedding-v3"),
 });
 

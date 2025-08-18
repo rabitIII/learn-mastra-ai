@@ -1,8 +1,9 @@
 import { MDocument } from "@mastra/rag";
+import { getFile } from "../tools/md-reader.tool";
 import { embedMany } from "ai";
-import { getFile } from "./mastra/tools/md-reader.tool";
-import { mastra } from "./mastra";
-import { qwen } from "./mastra/agents/research-agent";
+import { qwen } from "qwen-ai-provider";
+import { mastra } from "..";
+import { text } from "stream/consumers";
 
 
 const contents = await getFile();
